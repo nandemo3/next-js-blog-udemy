@@ -4,16 +4,9 @@ import { getAllPostIds, getPostData } from "@/app/lib/post";
 import RootLayout from "../../layout";
 import utilStyles from "../../../styles/utils.module.css"
 
-export async function getStaticPaths() {
-    const paths = getAllPostIds();
 
-    return {
-        paths,
-        fallback: false
-    }
-}
 
-export async function getData(id: string) {
+async function getData(id: string) {
     const postData = await getPostData(id)
     return {
       props: {

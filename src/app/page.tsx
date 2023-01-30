@@ -5,7 +5,7 @@ import utilStyles from "../styles/utils.module.css"
 import { getPostsData } from "./lib/post"
 
 // SSGの場合
-export async function getData() {
+async function getData() {
   const allPostsData = getPostsData()
 
   return {
@@ -25,7 +25,7 @@ const Home = () => {
       <section className={utilStyles.headingMd}>
         <h2>🗒エンジニアのブログ</h2>
         <div className={styles.grid}>
-          {props.allPostsData.map(({id, title, date, thumbnail}) =>  (<article>
+          {props.allPostsData.map(({id, title, date, thumbnail}, index) =>  (<article key={index}>
               <Link href={`posts/${id}`}>
                 <img src={thumbnail} alt="" className={styles.thumbnailImage} />
               </Link>
